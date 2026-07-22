@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yancheng Liu</title>
+<style>
+  :root{
+    --ink:#1a1a1a; --muted:#5b5b5b; --line:#e6e6e6;
+    --accent:#8a1f2b; --bg:#ffffff; --card:#fafafa;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    line-height:1.6; font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:64px 24px 80px}
+  header{border-bottom:1px solid var(--line); padding-bottom:28px; margin-bottom:36px}
+  h1{
+    font-size:2.6rem; line-height:1.1; margin:0 0 6px;
+    letter-spacing:-.01em; font-weight:700;
+  }
+  .role{font-size:1.06rem; color:var(--muted); margin:0}
+  .loc{font-size:.95rem; color:var(--muted); margin:10px 0 0}
+  h2{
+    font-size:.82rem; text-transform:uppercase; letter-spacing:.09em;
+    color:var(--accent); font-weight:700; margin:40px 0 14px;
+  }
+  section{margin-top:8px}
+  .row{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline}
+  .row .place{font-weight:600}
+  .row .date{color:var(--muted); font-size:.9rem; white-space:nowrap}
+  .sub{color:var(--muted); margin:2px 0 0; font-size:.98rem}
+  .edu-item{padding:14px 0; border-bottom:1px solid var(--line)}
+  .edu-item:last-child{border-bottom:none}
+  .contact{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:18px 20px;
+  }
+  .contact div{margin:4px 0}
+  .contact .label{display:inline-block; min-width:118px; color:var(--muted); font-size:.9rem}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  footer{margin-top:52px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem}
+  @media (prefers-color-scheme: dark){
+    :root{--ink:#ececec; --muted:#a3a3a3; --line:#2c2c2c; --bg:#111214; --card:#191a1c; --accent:#e0808c}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Yancheng Liu</h1>
+      <p class="role">Undergraduate, BA (Hons) Natural Sciences (Physical) &middot; University of Cambridge</p>
+      <p class="loc">Cambridge, United Kingdom</p>
+    </header>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="contact">
+        <div><span class="label">Name</span> Yancheng Liu</div>
+        <div><span class="label">Email</span> <a href="mailto:Liuyc1025@outlook.com">Liuyc1025@outlook.com</a></div>
+        <div><span class="label">University email</span> <a href="mailto:yl998@cam.ac.uk">yl998@cam.ac.uk</a></div>
+        <div><span class="label">Institution</span> University of Cambridge (Selwyn College)</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="edu-item">
+        <div class="row">
+          <span class="place">University of Cambridge, Selwyn College</span>
+          <span class="date">Oct 2023 &ndash; Jun 2026</span>
+        </div>
+        <p class="sub">BA (Hons) Natural Sciences (Physical)</p>
+      </div>
+      <div class="edu-item">
+        <div class="row">
+          <span class="place">Shenzhen College of International Education</span>
+          <span class="date">Aug 2019 &ndash; Jun 2023</span>
+        </div>
+        <p class="sub">A-Levels: Mathematics, Further Mathematics, Chemistry, Physics, EPQ</p>
+      </div>
+    </section>
+
+    <footer>
+      Personal academic page &middot; Yancheng Liu &middot; Last updated July 2026
+    </footer>
+  </div>
+</body>
+</html>
