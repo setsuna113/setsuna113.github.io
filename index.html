@@ -3,92 +3,149 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yancheng Liu</title>
+<title>Yancheng (Jason) Liu</title>
+<meta name="description" content="Yancheng (Jason) Liu, MRes student in AI and Machine Learning at Imperial College London. LLM agent memory, KV-cache management and LLM serving.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1a1a1a; --muted:#5b5b5b; --line:#e6e6e6;
-    --accent:#8a1f2b; --bg:#ffffff; --card:#fafafa;
+    --bg:#ffffff; --ink:#1b1c1e; --muted:#5f6368; --faint:#8a8f96;
+    --line:#e3e5e8; --card:#ffffff;
+    --chip-bg:#e6f4ea; --chip-ink:#1e6b3a; --link:#1e6b3a;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121315; --ink:#e8e9eb; --muted:#a4a8ae; --faint:#7d828a;
+      --line:#2a2d31; --card:#16181a;
+      --chip-bg:#173322; --chip-ink:#8fd6a5; --link:#8fd6a5;
+    }
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-    line-height:1.6; font-size:17px;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:720px; margin:0 auto; padding:64px 24px 80px}
-  header{border-bottom:1px solid var(--line); padding-bottom:28px; margin-bottom:36px}
-  h1{
-    font-size:2.6rem; line-height:1.1; margin:0 0 6px;
-    letter-spacing:-.01em; font-weight:700;
-  }
-  .role{font-size:1.06rem; color:var(--muted); margin:0}
-  .loc{font-size:.95rem; color:var(--muted); margin:10px 0 0}
-  h2{
-    font-size:.82rem; text-transform:uppercase; letter-spacing:.09em;
-    color:var(--accent); font-weight:700; margin:40px 0 14px;
-  }
-  section{margin-top:8px}
-  .row{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline}
-  .row .place{font-weight:600}
-  .row .date{color:var(--muted); font-size:.9rem; white-space:nowrap}
-  .sub{color:var(--muted); margin:2px 0 0; font-size:.98rem}
-  .edu-item{padding:14px 0; border-bottom:1px solid var(--line)}
-  .edu-item:last-child{border-bottom:none}
-  .contact{
-    background:var(--card); border:1px solid var(--line); border-radius:12px;
-    padding:18px 20px;
-  }
-  .contact div{margin:4px 0}
-  .contact .label{display:inline-block; min-width:118px; color:var(--muted); font-size:.9rem}
-  a{color:var(--accent); text-decoration:none}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--link);text-decoration:none}
   a:hover{text-decoration:underline}
-  footer{margin-top:52px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem}
-  @media (prefers-color-scheme: dark){
-    :root{--ink:#ececec; --muted:#a3a3a3; --line:#2c2c2c; --bg:#111214; --card:#191a1c; --accent:#e0808c}
+  .wrap{max-width:820px;margin:0 auto;padding:0 32px 48px}
+  nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:13px}
+  nav .home{color:var(--ink)}
+  nav .links{display:flex;gap:18px;flex-wrap:wrap}
+  nav .links a{color:var(--muted)}
+  nav .links a.cv{color:var(--link)}
+  header{padding:40px 0 8px}
+  h1{font-size:34px;line-height:1.15;font-weight:500;margin:0;letter-spacing:-.01em}
+  .aff{color:var(--muted);font-size:15px;margin:8px 0 0}
+  .bio{font-size:16px;margin:18px 0 0;max-width:680px}
+  .status{font-family:var(--mono);font-size:13px;color:var(--muted);margin:14px 0 0}
+  .label{font-family:var(--mono);font-size:13px;color:var(--faint);margin:44px 0 14px;font-weight:400}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 16px;display:flex;flex-direction:column}
+  .card h3{font-size:17px;font-weight:500;margin:0;line-height:1.3}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--faint);margin:4px 0 0}
+  .card p{font-size:14px;color:var(--muted);margin:10px 0 0;line-height:1.55}
+  .result{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink);margin:12px 0 0;line-height:1.5}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none}
+  .chips li{font-family:var(--mono);font-size:12px;background:var(--chip-bg);color:var(--chip-ink);padding:3px 8px;border-radius:5px;line-height:1.4}
+  .repo{font-family:var(--mono);font-size:12px;margin:12px 0 0;overflow-wrap:anywhere}
+  .spacer{flex:1}
+  .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+  .item{font-size:15px;line-height:1.55;margin:0 0 14px}
+  .item .what{color:var(--muted)}
+  .item .when{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .pub{font-size:15px;line-height:1.6}
+  .pub .title{color:var(--ink);font-weight:500}
+  .pub .venue{color:var(--muted);font-style:italic}
+  .pub .note{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--faint);display:flex;gap:16px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+  @media (max-width:640px){
+    .wrap{padding:0 16px 40px}
+    header{padding-top:28px}
+    h1{font-size:28px}
+    .grid,.two{grid-template-columns:minmax(0,1fr)}
+    .two{gap:0}
   }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Yancheng Liu</h1>
-      <p class="role">Undergraduate, BA (Hons) Natural Sciences (Physical) &middot; University of Cambridge</p>
-      <p class="loc">Cambridge, United Kingdom</p>
-    </header>
+<div class="wrap">
+  <nav>
+    <a class="home" href="./">~/yancheng-liu</a>
+    <div class="links">
+      <a href="#research">research</a>
+      <a href="#education">education</a>
+      <a href="#publications">publications</a>
+      <a class="cv" href="cv.pdf">cv.pdf</a>
+    </div>
+  </nav>
 
-    <section>
-      <h2>Contact</h2>
-      <div class="contact">
-        <div><span class="label">Name</span> Yancheng Liu</div>
-        <div><span class="label">Email</span> <a href="mailto:Liuyc1025@outlook.com">Liuyc1025@outlook.com</a></div>
-        <div><span class="label">University email</span> <a href="mailto:yl998@cam.ac.uk">yl998@cam.ac.uk</a></div>
-        <div><span class="label">Institution</span> University of Cambridge (Selwyn College)</div>
-      </div>
-    </section>
+  <header>
+    <h1>Yancheng (Jason) Liu</h1>
+    <p class="aff">MRes in AI and Machine Learning, Imperial College London · BA Natural Sciences, University of Cambridge</p>
+    <p class="bio">I study how LLM agents should manage their memory, the KV cache and other inference state, when each decision about what to keep, in what form and where is made before its consequences are visible.</p>
+    <p class="status">Applying for PhD programs, Fall 2027 · <a href="mailto:j.liu26@imperial.ac.uk">j.liu26@imperial.ac.uk</a></p>
+  </header>
 
-    <section>
-      <h2>Education</h2>
-      <div class="edu-item">
-        <div class="row">
-          <span class="place">University of Cambridge, Selwyn College</span>
-          <span class="date">Oct 2023 &ndash; Jun 2026</span>
-        </div>
-        <p class="sub">BA (Hons) Natural Sciences (Physical)</p>
-      </div>
-      <div class="edu-item">
-        <div class="row">
-          <span class="place">Shenzhen College of International Education</span>
-          <span class="date">Aug 2019 &ndash; Jun 2023</span>
-        </div>
-        <p class="sub">A-Levels: Mathematics, Further Mathematics, Chemistry, Physics, EPQ</p>
-      </div>
-    </section>
+  <h2 class="label" id="research">// research</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>Racer: Recoverable KV-Cache Management for Multi-Turn Agents</h3>
+      <div class="meta">Aug–Sep 2026 · SJTU · Prof. Shengzhong Liu</div>
+      <p>A wrong action taken under KV compression changes the environment and the error accumulates over later turns. Racer detects risky drafts before an action executes, restores the original evidence and regenerates. Co-first author, under review at ICLR 2027.</p>
+      <div class="result">+43.7% task success on BFCL Long Context (relative) · 1.67× the task throughput of full context under concurrent serving</div>
+      <div class="spacer"></div>
+      <ul class="chips"><li>SGLang</li><li>KV-cache compression</li><li>FlexAttention</li><li>FlashAttention-2</li><li>BFCL</li></ul>
+    </article>
 
-    <footer>
-      Personal academic page &middot; Yancheng Liu &middot; Last updated July 2026
-    </footer>
+    <article class="card">
+      <h3>Mechanistic Interventions and Failure Signals in Multimodal Models</h3>
+      <div class="meta">Jun–Sep 2026 · Cambridge MIL · Dr Mengjie Qian, Prof. Kate Knill</div>
+      <p>Intervened on internal representations and inputs to attribute MC-dropout error signals and alignment gains to their sources. Perturbing only the lower half of the blocks matched perturbing all layers.</p>
+      <div class="result">+0.07–0.12 error-detection AUROC</div>
+      <div class="spacer"></div>
+      <ul class="chips"><li>MC dropout</li><li>layer-wise intervention</li><li>cross-attention</li></ul>
+    </article>
+
+    <article class="card">
+      <h3>ShapeFlow: Serving Agentic Workflows with Late-Bound Representations</h3>
+      <div class="meta">May–Jul 2026 · SJTU · Prof. Shengzhong Liu</div>
+      <p>Deep-research agents decode a summary of every retrieved page. ShapeFlow is a scheduler that chooses under engine load between per-page summaries and a decision model that outputs only span IDs.</p>
+      <div class="result">CPU-selected spans in place of page summaries: −67% vLLM busy time per task on BrowseComp-Plus</div>
+      <div class="spacer"></div>
+      <ul class="chips"><li>vLLM</li><li>scheduler</li><li>BrowseComp-Plus</li><li>open_deep_research</li></ul>
+      <div class="repo"><a href="https://github.com/setsuna113/shapeflow-p1-study">github.com/setsuna113/shapeflow-p1-study</a></div>
+    </article>
+
+    <article class="card">
+      <h3>Coupled Muon: Product-Space Orthogonalization for Transformer Optimizers</h3>
+      <div class="meta">Mar–May 2026 · SJTU AI · Yiting Chen, Prof. Junchi Yan</div>
+      <p>Muon orthogonalizes each matrix's update separately, leaving the Q–K and V–O product updates uncontrolled. Coupled Muon orthogonalizes the product's update.</p>
+      <div class="result">0.007–0.024 nats lower validation loss than Muon on RoPE dense and MoE variants · 960 runs</div>
+      <div class="spacer"></div>
+      <ul class="chips"><li>Muon</li><li>Newton–Schulz</li><li>MoE</li></ul>
+      <div class="repo"><a href="https://github.com/setsuna113/coupled-muon-nanogpt">github.com/setsuna113/coupled-muon-nanogpt</a></div>
+    </article>
   </div>
+
+  <div class="two">
+    <section>
+      <h2 class="label" id="education">// education</h2>
+      <div class="item">Imperial College London<br><span class="what">MRes in AI and Machine Learning</span><br><span class="when">Sep 2026 – Sep 2027</span></div>
+      <div class="item">University of Cambridge, Selwyn College<br><span class="what">BA (Hons) Natural Sciences, Part II Astrophysics</span><br><span class="when">Oct 2023 – Jun 2026</span></div>
+    </section>
+    <section>
+      <h2 class="label" id="publications">// publications</h2>
+      <div class="pub">Yuhan Zhu*, <strong>Yancheng Liu</strong>*, Chuheng Du, Junyi Chen, Shuai Huang, Tailin Zhou, Shengzhong Liu, Fan Wu, and Guihai Chen. <span class="title">Racer: Recoverable KV Cache Management for Multi-Turn LLM Agents.</span> <span class="venue">Under review at ICLR 2027.</span><br><span class="note">*Equal contribution</span></div>
+    </section>
+  </div>
+
+  <footer>
+    <a href="mailto:j.liu26@imperial.ac.uk">j.liu26@imperial.ac.uk</a>
+    <a href="https://github.com/setsuna113">github.com/setsuna113</a>
+    <span>London, UK</span>
+  </footer>
+</div>
 </body>
 </html>
